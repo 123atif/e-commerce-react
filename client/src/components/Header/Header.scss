@@ -18,10 +18,10 @@
   }
   .header-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     height: 50px;
-    max-width: 80%;
+    // max-width: 100%;
     margin: 0 auto;
     @include md {
       height: 80px;
@@ -29,11 +29,15 @@
 
     .left {
       list-style-type: none;
+      margin: 0px;
+      padding: 0px;
       display: none;
       gap: 25px;
+
       @include md {
         display: flex;
       }
+
       li {
         font-size: 14px;
         font-weight: 600;
@@ -47,9 +51,9 @@
       cursor: pointer;
       @include md {
         font-size: 34px;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
+        // position: absolute;
+        // left: 50%;
+        // transform: translateX(-50%);
       }
     }
 

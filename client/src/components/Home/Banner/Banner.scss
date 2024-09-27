@@ -1,1 +1,98 @@
 @import "../../../css-config/mixins.scss";
+
+.hero-banner {
+  padding: 40px 0;
+  position: relative;
+  background-image: linear-gradient(to right, #8e2de2, #4a00e0);
+  @include md {
+    height: calc(100vh - 9rem);
+  }
+  .content {
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: center;
+    flex-direction: column-reverse;
+    max-width: calc(100% - 40px);
+    margin: 0 auto;
+    position: relative;
+    @include md {
+      flex-direction: row;
+      max-width: 1100px;
+    }
+  }
+  .banner-img {
+    position: relative;
+    z-index: 9;
+    width: 12.5rem;
+    margin-bottom: 20px;
+    @include md {
+      width: 350px;
+      margin: 50px 60px 0 0;
+    }
+    @include xxl {
+      width: 600px;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+  .text-content {
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include md {
+      width: 45rem;
+    }
+    @include xxl {
+      left: 0;
+      width: 65rem;
+    }
+    h1 {
+      font-size: 70px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 20px;
+      @include md {
+        font-size: 7rem;
+      }
+    }
+    p {
+      width: 14rem;
+      font-size: 14px;
+      line-height: 20px;
+      margin-bottom: 20px;
+      @include md {
+        width: 20rem;
+      }
+    }
+    .ctas {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      .banner-cta {
+        text-transform: uppercase;
+        font-size: 13px;
+        font-weight: 500;
+        // width: fit-content;
+        border: 2px solid white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        @include md {
+          font-size: 1rem;
+          padding: 10px 20px;
+        }
+        &.v2 {
+          background-color: white;
+          color: black;
+        }
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+}
