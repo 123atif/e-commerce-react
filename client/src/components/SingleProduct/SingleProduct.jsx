@@ -22,7 +22,7 @@ const SingleProduct = () => {
             <span className="price">Price</span>
             <span className="desc">Product Description</span>
             <div className="cart-buttons">
-              <div className="quantity-button">
+              <div className="quantity-buttons">
                 <span>-</span>
                 <span>5</span>
                 <span>+</span>
@@ -36,15 +36,15 @@ const SingleProduct = () => {
             <div className="info-item">
               <span className="text-bold">
                 Category:
-                <span>Headphones</span>
+                <span> Headphones</span>
               </span>
               <span className="text-bold">
                 Share:
                 <span className="social-icon">
-                  <FaFacebook size={16} />
-                  <FaInstagram size={16} />
-                  <FaLinkedin size={16} />
-                  <FaPinterest size={16} />
+                  <FaFacebook size={18} />
+                  <FaInstagram size={18} />
+                  <FaLinkedin size={18} />
+                  <FaPinterest size={18} />
                 </span>
               </span>
             </div>
