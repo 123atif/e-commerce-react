@@ -9,6 +9,7 @@ import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
 import "./Header.scss";
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [showCart, setShowCart] = useState(false);
   const handleScroll = () => {
     const offSet = window.scrollY;
     if (offSet > 200) {
@@ -34,13 +35,14 @@ const Header = () => {
           <div className="right">
             <FaSearch />
             <AiOutlineHeart />
-            <span className="cart-icon">
+            <span className="cart-icon" onClick={() => setShowCart(true)}>
               <AiOutlineShoppingCart />
               <span>5</span>
             </span>
           </div>
         </div>
       </header>
+      {showCart && <Cart setShowCart={setShowCart} />}
     </>
   );
 };
