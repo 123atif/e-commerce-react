@@ -1,15 +1,17 @@
 import "./Category.scss";
-// import cate1 from "../../../assets/category/cat-1.jpg";
-// import cate2 from "../../../assets/category/cat-2.jpg";
-// import cate3 from "../../../assets/category/cat-3.jpg";
-// import cate4 from "../../../assets/category/cat-4.jpg";
-
+import { useNavigate } from "react-router-dom";
 const Category = ({ categories }) => {
+  const navigate = useNavigate();
   return (
     <div className="shop-by-category">
+      <div className="sec-heading">Shop By Category</div>
       <div className="categories">
         {categories?.data?.map((item, id) => (
-          <div className="catgeory" key={id}>
+          <div
+            className="catgeory"
+            key={id}
+            onClick={() => navigate(`/category/${item.id}`)}
+          >
             <img
               src={`${import.meta.env.VITE_DEV_URL}${item.img.url}`}
               alt="category"

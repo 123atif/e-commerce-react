@@ -5,9 +5,11 @@ import Category from "./Category/Category";
 import Products from "../Products/Products";
 import { fetchDataFromApi } from "../../utils/api";
 import { Context } from "../../utils/Context";
+
 const Home = () => {
   const { categories, products, setCategories, setProducts } =
     useContext(Context);
+
   useEffect(() => {
     getCategories();
     getProducts();
