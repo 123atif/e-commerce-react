@@ -8,6 +8,7 @@ import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
 
 import "./Header.scss";
 const Header = () => {
+  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
@@ -28,11 +29,13 @@ const Header = () => {
       <header className={`main-header ${scrolled ? "sticky-header" : ""}`}>
         <div className="header-content">
           <ul className="left">
-            <li>Home</li>
+            <li onClick={() => navigate("/")}>Home</li>
             <li>About</li>
             <li>Categories</li>
           </ul>
-          <div className="center">ONLINESTORE.</div>
+          <div className="center" onClick={() => navigate("/")}>
+            ONLINESTORE.
+          </div>
           <div className="right">
             <FaSearch onClick={() => setShowSearch(true)} />
             <AiOutlineHeart />

@@ -15,7 +15,6 @@ const SingleProduct = () => {
   const [count, setCount] = useState(1);
   const { id } = useParams();
   const { data } = useFetch(`/api/products?populate=*&[filters][id]=${id}`);
-  console.log(data);
   return (
     <div className="single-product-main-content">
       <div className="layout">
@@ -59,7 +58,10 @@ const SingleProduct = () => {
             </div>
           </div>
         </div>
-        <RelatedProducts />
+        <RelatedProducts
+          productId={id}
+          categoriesId={data?.data[0]?.categories[0]?.id}
+        />
       </div>
     </div>
   );
