@@ -6,26 +6,35 @@ import {
   FaPinterest,
   FaCartPlus,
 } from "react-icons/fa";
-import product_details_image from "../../assets/products/earbuds-prod-1.webp";
 import RelatedProducts from "./RelatedProducts/RelatedProducts";
 import "./SingleProduct.scss";
+import { useParams } from "react-router-dom";
+import useFetch from "../hooks/useFetch";
+import { useState } from "react";
 const SingleProduct = () => {
+  const [count, setCount] = useState(1);
+  const { id } = useParams();
+  const { data } = useFetch(`/api/products?populate=*&[filters][id]=${id}`);
+  console.log(data);
   return (
     <div className="single-product-main-content">
       <div className="layout">
         <div className="single-product-page">
           <div className="left">
-            <img src={product_details_image} alt="product_details_image" />
+            <img
+              src={import.meta.env.VITE_DEV_URL + data?.data[0]?.img[0]?.url}
+              alt="product_details_image"
+            />
           </div>
           <div className="right">
-            <span className="name">Product Name</span>
-            <span className="price">Price</span>
-            <span className="desc">Product Description</span>
+            <span className="name">{data?.data[0]?.title}</span>
+            <span className="price">RS: {data?.data[0]?.price}</span>
+            <span className="desc">{data?.data[0]?.desc}</span>
             <div className="cart-buttons">
               <div className="quantity-buttons">
-                <span>-</span>
-                <span>5</span>
-                <span>+</span>
+                <span onClick={() => count > 1 && setCount(count - 1)}>-</span>
+                <span>{count}</span>
+                <span onClick={() => setCount(count + 1)}>+</span>
               </div>
               <button className="add-to-cart-button">
                 <FaCartPlus size={20} />
@@ -36,7 +45,7 @@ const SingleProduct = () => {
             <div className="info-item">
               <span className="text-bold">
                 Category:
-                <span> Headphones</span>
+                <span> {data?.data[0]?.categories[0]?.title}</span>
               </span>
               <span className="text-bold">
                 Share:
