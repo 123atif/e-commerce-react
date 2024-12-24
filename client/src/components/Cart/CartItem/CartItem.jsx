@@ -27,14 +27,18 @@ const CartItem = () => {
               }}
             />
             <div className="quantity-buttons">
-              <span>-</span>
-              <span>5</span>
-              <span>+</span>
+              <span onClick={() => handleCartProductQuanity("dec", item)}>
+                -
+              </span>
+              <span>{item?.quantity}</span>
+              <span onClick={() => handleCartProductQuanity("inc", item)}>
+                +
+              </span>
             </div>
             <div className="text">
-              <span>3 </span>
+              <span>{item?.quantity}</span>
               <span>x </span>
-              <span className="price">RS: {item?.price}</span>
+              <span className="price">RS: {item?.price * item?.quantity}</span>
             </div>
           </div>
         </div>
