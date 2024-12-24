@@ -10,9 +10,12 @@ import RelatedProducts from "./RelatedProducts/RelatedProducts";
 import "./SingleProduct.scss";
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { Context } from "../../utils/Context";
+import { toast } from "react-toastify";
 const SingleProduct = () => {
-  const [count, setCount] = useState(1);
+  const [quantity, setQuantity] = useState(1);
+  const { handleAddtoCart, handleRemoveFromCart } = useContext(Context);
   const { id } = useParams();
   const { data } = useFetch(`/api/products?populate=*&[filters][id]=${id}`);
   return (
@@ -31,11 +34,20 @@ const SingleProduct = () => {
             <span className="desc">{data?.data[0]?.desc}</span>
             <div className="cart-buttons">
               <div className="quantity-buttons">
-                <span onClick={() => count > 1 && setCount(count - 1)}>-</span>
-                <span>{count}</span>
-                <span onClick={() => setCount(count + 1)}>+</span>
+                <span onClick={() => quantity > 1 && setQuantity(quantity - 1)}>
+                  -
+                </span>
+                <span>{quantity}</span>
+                <span onClick={() => setQuantity(quantity + 1)}>+</span>
               </div>
-              <button className="add-to-cart-button">
+              <button
+                className="add-to-cart-button"
+                onClick={() => {
+                  handleAddtoCart(data?.data[0], quantity);
+                  toast.success("Product added to cart");
+                  setQuantity(1);
+                }}
+              >
                 <FaCartPlus size={20} />
                 ADD TO CART
               </button>
